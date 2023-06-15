@@ -61,12 +61,22 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        document.getElementById("output").value =xhr.responseText;
-                        if(xhr.responseText=="positive")
+                        var responseText = xhr.responseText; // Assuming xhr is your XMLHttpRequest object
+                        // Tokenize the response text by line
+                        var lines = responseText.split('\n');
+                        // Get the first line and trim any leading or trailing whitespace
+                        var firstValue = lines[0].trim();
+                        // Concatenate all lines except the first one
+                        var concatenatedString = '';
+                        for (var i = 1; i < lines.length; i++) {
+                            concatenatedString += lines[i];
+                        }
+                        document.getElementById("output").value =concatenatedString;
+                        if(firstValue=="positive")
                             document.getElementById("output").style.backgroundColor = "green";
-                        if(xhr.responseText=="negative")
+                        if(firstValue=="negative")
                             document.getElementById("output").style.backgroundColor = "red";
-                        if(xhr.responseText=="neutral")
+                        if(firstValue=="neutral")
                             document.getElementById("output").style.backgroundColor = "lightblue";
                         console.log("API request successful!");
                         // Handle the response data here
