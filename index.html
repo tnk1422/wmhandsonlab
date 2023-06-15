@@ -71,7 +71,7 @@
                         for (var i = 1; i < lines.length; i++) {
                             concatenatedString += lines[i];
                         }
-                        document.getElementById("output").value =concatenatedString;
+                        document.getElementById("output").value =concatenatedString.trim();
                         if(firstValue=="positive")
                             document.getElementById("output").style.backgroundColor = "lightgreen";
                         if(firstValue=="negative")
