@@ -63,6 +63,7 @@
                     if (xhr.status === 200) {
                         var responseText = xhr.responseText; // Assuming xhr is your XMLHttpRequest object
                         // Tokenize the response text by line
+                        responseText=responseText.trim();
                         var lines = responseText.split('\n');
                         // Get the first line and trim any leading or trailing whitespace
                         var firstValue = lines[0].trim();
