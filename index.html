@@ -69,19 +69,25 @@
                         var firstValue = lines[0].trim().toLowerCase();
                         // Concatenate all lines except the first one
                         var concatenatedString = '';
-                        for (var i = 1; i < lines.length; i++) {
-                            concatenatedString += lines[i];
+                        if(lines.length>1)
+                        {
+                            for (var i = 1; i < lines.length; i++) {
+                                concatenatedString += lines[i];
+                                }
+                            document.getElementById("output").value =concatenatedString.trim();
+                            if(firstValue=="positive")
+                                document.getElementById("output").style.backgroundColor = "lightgreen";
+                            if(firstValue=="negative")
+                                document.getElementById("output").style.backgroundColor = "#FFCCCC";
+                            if(firstValue=="neutral")
+                                document.getElementById("output").style.backgroundColor = "white";
+                            console.log("API request successful!");
+                            // Handle the response data here
                         }
-                        document.getElementById("output").value =concatenatedString.trim();
-                        if(firstValue=="positive")
-                            document.getElementById("output").style.backgroundColor = "lightgreen";
-                        if(firstValue=="negative")
-                            document.getElementById("output").style.backgroundColor = "#FFCCCC";
-                        if(firstValue=="neutral")
-                            document.getElementById("output").style.backgroundColor = "white";
-                        console.log("API request successful!");
-                        // Handle the response data here
-                    } else {
+                        else
+                            document.getElementById("output").value =responseText;
+                    }
+                  else {
                         console.log("API request failed!");
                         document.getElementById("output").value =xhr.responseText;
                         // Handle the error here
