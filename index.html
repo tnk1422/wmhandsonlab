@@ -85,7 +85,10 @@
                             // Handle the response data here
                         }
                         else
-                            document.getElementById("output").value =responseText;
+                            {
+                                document.getElementById("output").value =responseText;
+                                document.getElementById("output").style.backgroundColor = "white";
+                            }
                     }
                   else {
                         console.log("API request failed!");
